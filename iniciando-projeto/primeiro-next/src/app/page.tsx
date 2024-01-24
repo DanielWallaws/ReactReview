@@ -1,14 +1,27 @@
-import { Person } from "@/components/Person";
+import { Card } from "@/components/Card";
+// import { Person } from "@/components/Person";
+// import { Carattere } from "next/font/google";
 // import { GeoForms } from "@/components/GeoForms";
 
 const Page = () => {
   return (
     // apesar das declarações abaixo se assemelharem a html elas não são. Na verdade são sintax do jsx
     <div>
-      <h1 className="font-bold text-2xl p-4" >Olá mundo</h1>
-      <h3 className="p-4">Algum outro texto</h3>
-
-      <Person
+      <h1 className="font-bold text-2xl " >Olá mundo</h1>
+      <h3 className="">Algum outro texto</h3>
+      
+      {/* <Card phrase="Alguma frase TOP" author="Coach de milhões"/> */}
+      <Card phrase="Alguma frase TOP" author="Napoleão Hill"/>
+      {/* <Card>
+        <>
+        <h3 className="text-3xl font-bold italic">"Frase de efeito"</h3>
+        <p className="text-right text-sm">- Autor deconhecido</p>
+        </>
+      </Card> */}
+      
+       
+      {/*Aula 8*/}
+      {/* <Person
         name="Elon Musk"
         avatar='https://files.sunoresearch.com.br/p/uploads/2018/09/Elon-Musk.jpg'
         roles= {['CEO da Tesla', 'CEO da SpaceX', 'CEO da Neuralink', 'CEO da Starlink']}
@@ -24,7 +37,7 @@ const Page = () => {
         name="João"
         roles= {['CEO de algo', 'CEO da empresa tal']}
         
-      />
+      /> */}
     </div>
     
   );

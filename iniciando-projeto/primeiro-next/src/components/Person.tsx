@@ -1,6 +1,6 @@
-const getWeekday = () => {
-    return new Intl.DateTimeFormat('pt-BR', {weekday: 'long'}).format(new Date())
-};
+// const getWeekday = () => {
+//     return new Intl.DateTimeFormat('pt-BR', {weekday: 'long'}).format(new Date())
+// };
 
 type Props = {
     name: string;
