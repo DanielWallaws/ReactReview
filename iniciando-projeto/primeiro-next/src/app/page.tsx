@@ -1,17 +1,62 @@
-import { Card } from "@/components/Card";
-// import { Person } from "@/components/Person";
-// import { Carattere } from "next/font/google";
-// import { GeoForms } from "@/components/GeoForms";
+import {peopleList} from '@/data/peopleList';
 
 const Page = () => {
+
+  const chemists = peopleList.filter(person => person.profession === 'chemist');
+  
   return (
-    // apesar das declarações abaixo se assemelharem a html elas não são. Na verdade são sintax do jsx
     <div>
-      <h1 className="font-bold text-2xl " >Olá mundo</h1>
-      <h3 className="">Algum outro texto</h3>
+      <h1 className="font-bold text-2xl">Olá mundo</h1>
+      <h3>Algum texto</h3>
       
-      {/* <Card phrase="Alguma frase TOP" author="Coach de milhões"/> */}
-      <Card phrase="Alguma frase TOP" author="Napoleão Hill"/>
+      {chemists.length > 0&&
+        <>
+          <h3>Lista de Químicos</h3>
+          <ul>
+            {chemists.map(person=>
+            <li key={person.id}>{person.name}</li>
+            )}
+          </ul>
+        </>
+      }
+      
+      
+      {/* {peopleList.length > 0 &&
+        <ul>
+          {peopleList.map(person => 
+            <li key={person.id}>  {person.name} - {person.profession}</li>)
+          }
+        </ul>
+      }
+
+      {/* <ul>
+        {peopleList.map(person => 
+        <li key={person.id}>  {person.name} - {person.profession}</li>)
+        }
+      </ul> */}
+
+
+    </div>
+  )
+}
+
+export default Page;
+
+
+// import { Card } from "@/components/Card";
+// // import { Person } from "@/components/Person";
+// // import { Carattere } from "next/font/google";
+// // import { GeoForms } from "@/components/GeoForms";
+
+// const Page = () => {
+//   return (
+//     // apesar das declarações abaixo se assemelharem a html elas não são. Na verdade são sintax do jsx
+//     <div>
+//       <h1 className="font-bold text-2xl " >Olá mundo</h1>
+//       <h3 className="">Algum outro texto</h3>
+      
+//       {/* <Card phrase="Alguma frase TOP" author="Coach de milhões"/> */}
+      // <Card phrase="Alguma frase TOP" author="Napoleão Hill"/>
       {/* <Card>
         <>
         <h3 className="text-3xl font-bold italic">"Frase de efeito"</h3>
@@ -38,12 +83,12 @@ const Page = () => {
         roles= {['CEO de algo', 'CEO da empresa tal']}
         
       /> */}
-    </div>
+//     </div>
     
-  );
-}
+//   );
+// }
 
-export default Page;
+// export default Page;
 
 // const Page = () => {
 //   return (
