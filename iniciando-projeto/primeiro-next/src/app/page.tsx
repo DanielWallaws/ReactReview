@@ -1,46 +1,82 @@
-import {peopleList} from '@/data/peopleList';
 
-const Page = () => {
+import { AmountEmoji } from "@/components/AmountEmoji";
 
-  const chemists = peopleList.filter(person => person.profession === 'chemist');
-  
+const Page = ()=> {
+  type Props = {
+    nota: number;
+}
+
   return (
-    <div>
-      <h1 className="font-bold text-2xl">Olá mundo</h1>
-      <h3>Algum texto</h3>
+    <div className="w-screen h-screen flex justify-center items-center">
       
-      {chemists.length > 0&&
-        <>
-          <h3>Lista de Químicos</h3>
-          <ul>
-            {chemists.map(person=>
-            <li key={person.id}>{person.name}</li>
-            )}
-          </ul>
-        </>
-      }
+      <>
+        <AmountEmoji rate={2}/>
+      </>
       
-      
-      {/* {peopleList.length > 0 &&
-        <ul>
-          {peopleList.map(person => 
-            <li key={person.id}>  {person.name} - {person.profession}</li>)
-          }
-        </ul>
-      }
-
-      {/* <ul>
-        {peopleList.map(person => 
-        <li key={person.id}>  {person.name} - {person.profession}</li>)
-        }
-      </ul> */}
-
-
     </div>
   )
 }
 
 export default Page;
+
+// import { gradienteStyle } from '@/components/StylePage';
+// import { CurrentHour } from '@/components/CurrentHour';
+
+// const Page = ()=> {
+
+//   return (
+//     <div style={gradienteStyle}>
+//       <CurrentHour></CurrentHour>
+
+//     </div>
+//   )
+// }
+
+// export default Page;
+
+// import {peopleList} from '@/data/peopleList';
+
+// const Page = () => {
+
+//   const chemists = peopleList.filter(person => person.profession === 'chemist');
+  
+//   return (
+//     <div>
+//       <h1 className="font-bold text-2xl">Olá mundo</h1>
+//       <h3>Algum texto</h3>
+      
+//       {chemists.length > 0&&
+//         <>
+//           <h3>Lista de Químicos</h3>
+//           <ul>
+//             {chemists.map(person=>
+//             <li key={person.id}>{person.name}</li>
+//             )}
+//           </ul>
+//         </>
+//       }
+      
+      
+//       {/* {peopleList.length > 0 &&
+//         <ul>
+//           {peopleList.map(person => 
+//             <li key={person.id}>  {person.name} - {person.profession}</li>)
+//           }
+//         </ul>
+//       }
+
+//       {/* <ul>
+//         {peopleList.map(person => 
+//         <li key={person.id}>  {person.name} - {person.profession}</li>)
+//         }
+//       </ul> */}
+
+
+//     </div>
+//   )
+// }
+
+// export default Page;
 
 
 // import { Card } from "@/components/Card";
