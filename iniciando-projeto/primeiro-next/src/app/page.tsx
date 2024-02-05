@@ -1,23 +1,37 @@
-
-import { AmountEmoji } from "@/components/AmountEmoji";
+import { StudentTable } from "@/components/StudentTable";
+import { students } from "@/data/students";
 
 const Page = ()=> {
-  type Props = {
-    nota: number;
-}
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      
-      <>
-        <AmountEmoji rate={2}/>
-      </>
-      
+    <div className="container mx-auto">
+      <h1 className="text-5xl mb-5">Lista de estudantes</h1>
+      <StudentTable students={students}/>
     </div>
   )
 }
 
 export default Page;
+
+// import { AmountEmoji } from "@/components/AmountEmoji";
+
+// const Page = ()=> {
+//   type Props = {
+//     nota: number;
+// }
+
+//   return (
+//     <div className="w-screen h-screen flex justify-center items-center">
+      
+//       <>
+//         <AmountEmoji rate={2}/>
+//       </>
+      
+//     </div>
+//   )
+// }
+
+// export default Page;
 
 // import { gradienteStyle } from '@/components/StylePage';
 // import { CurrentHour } from '@/components/CurrentHour';
