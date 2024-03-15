@@ -2,27 +2,85 @@
 
 import { useState } from "react";
 
-//Aula usando state para auxiliar UI - Modulo 3 aula 67
+//Aula states mudando no tempo - Modulo 3 aula 9
 const Page = ()=> {
-  const [showSecret, setShowSecret] = useState(false);
-
+  const [nameInput, setNameInput] = useState('')
   const handleClickButton = ()=> {
-    setShowSecret(!showSecret)
+    alert(nameInput)
   }
 
 return (
   
     <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
-      <p></p>
-      <button onClick={handleClickButton} className="p-3 bg-blue-500 rounded">{showSecret ? 'Ocultar' : 'Mostrar'} Área Secreta</button>
-      {showSecret &&
-      <div className="p-3 rounded-md bg-blue-300 mt-3">Área Secreta</div>
-      }    
+      <input 
+      type="text" 
+      className="border border-black p-3 text-xl text-black rounded"
+      placeholder="Digite seu nome"
+      value={nameInput}
+      onChange={e=> setNameInput(e.target.value)}
+      />
+      <p>Seu nome é: {nameInput}</p>
+      <button onClick={handleClickButton} className="p-3 bg-blue-500 rounded mt-3">Mostrar valor do campo</button>
       </div>
 )}
 
 
  export default Page;
+
+// "use client"
+
+// import { useState } from "react";
+
+// //Aula using states em campos - Modulo 3 aula 8
+// const Page = ()=> {
+//   const [nameInput, setNameInput] = useState('')
+//   const handleClickButton = ()=> {
+//     alert(nameInput)
+//   }
+
+// return (
+  
+//     <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
+//       <input 
+//       type="text" 
+//       className="border border-black p-3 text-xl text-black rounded"
+//       placeholder="Digite seu nome"
+//       value={nameInput}
+//       onChange={e=> setNameInput(e.target.value)}
+//       />
+//       <p>Seu nome é: {nameInput}</p>
+//       <button onClick={handleClickButton} className="p-3 bg-blue-500 rounded mt-3">Mostrar valor do campo</button>
+//       </div>
+// )}
+
+
+//  export default Page;
+
+// "use client"
+
+// import { useState } from "react";
+
+// //Aula usando state para auxiliar UI - Modulo 3 aula 7
+// const Page = ()=> {
+//   const [showSecret, setShowSecret] = useState(false);
+
+//   const handleClickButton = ()=> {
+//     setShowSecret(!showSecret)
+//   }
+
+// return (
+  
+//     <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
+//       <p></p>
+//       <button onClick={handleClickButton} className="p-3 bg-blue-500 rounded">{showSecret ? 'Ocultar' : 'Mostrar'} Área Secreta</button>
+//       {showSecret &&
+//       <div className="p-3 rounded-md bg-blue-300 mt-3">Área Secreta</div>
+//       }    
+//       </div>
+// )}
+
+
+//  export default Page;
 
 // "use client"
 
