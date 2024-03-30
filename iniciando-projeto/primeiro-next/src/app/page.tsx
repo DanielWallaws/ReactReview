@@ -1,31 +1,97 @@
 "use client"
 
 import { useState } from "react";
+import { People } from "@/types/People";
 
-//Aula states mudando no tempo - Modulo 3 aula 9
+//Aula Atualizando objetos em States - Modulo 3 aula 11
 const Page = ()=> {
-  const [nameInput, setNameInput] = useState('')
-  const handleClickButton = ()=> {
-    alert(nameInput)
+  
+  const [fullName, setFullName] = useState<People>({name: 'Bonieky', lastName: 'Lacerda'})
+  
+  const handleClearButton = ()=> {
+    setFullName({...fullName, name:''})
   }
 
 return (
+   
   
     <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
       <input 
       type="text" 
-      className="border border-black p-3 text-xl text-black rounded"
-      placeholder="Digite seu nome"
-      value={nameInput}
-      onChange={e=> setNameInput(e.target.value)}
-      />
-      <p>Seu nome é: {nameInput}</p>
-      <button onClick={handleClickButton} className="p-3 bg-blue-500 rounded mt-3">Mostrar valor do campo</button>
+      placeholder="Nome" 
+      className="border border-black p-3 text-2xl text-black rounded-md mb-3"
+      value={fullName.name}
+      onChange={ e=> setFullName({...fullName, name: e.target.value})} />
+      
+      
+      <input 
+      type="text" 
+      placeholder="Sobrenome" 
+      className="border border-black p-3 text-2xl text-black rounded-md mb-3"
+      value={fullName.lastName}
+      onChange={ e=> setFullName({...fullName, lastName: e.target.value})}/>
+      
+      <p>Meu nome completo é:</p>
+      <p>{fullName.name} {fullName.lastName}</p>
+      <button onClick={handleClearButton} className="rounded-md bg-blue-500 p-2 mt-3">Limpar Nome</button>
       </div>
 )}
+//Obs: no onChange a primeira tentativa para exemplos foi a onChange={ e=> setFullName({name: e.target.value, lastName: fullName.lastName})} 
+// o que não é útil tendo em vista que o objeto pode ter muitas propriedades e type pedirá todas elas
+// então a solução é a que está no onCHange agora.
 
 
  export default Page;
+
+// "use client"
+
+// import { useState } from "react";
+
+// //Aula State updater - Modulo 3 aula 10
+// const Page = ()=> {
+// const [count, setCount]  = useState(0);
+
+// const handleButtonClick = () => {
+//   setCount(c => c + 2)
+//   setCount(c => c + 2)
+//   setCount(c => c + 2)
+//   //setCount(10)
+//   //setCount(20)
+//   //setCount(30)
+// }
+
+// return (
+  
+//     <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
+//     <p>
+//       {count}
+//     </p>
+//     <button onClick={handleButtonClick} className="bg-blue-700 text-white p-3 rounded-md">+6</button>
+      
+//       </div>
+// )}
+
+
+//  export default Page;
+
+// "use client"
+
+// import { useState } from "react";
+
+// //Aula states mudando no tempo - Modulo 3 aula 9
+// const Page = ()=> {
+
+  
+
+// return (
+  
+//     <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
+      
+//       </div>
+// )}
+
+
+//  export default Page;
 
 // "use client"
 
