@@ -1,47 +1,194 @@
 "use client"
 
+import { ToDoItem } from "@/types/ToDoItem";
 import { useState } from "react";
-import { People } from "@/types/People";
 
-//Aula Atualizando objetos em States - Modulo 3 aula 11
+
+//Aula Arrays em States - Excluir - Modulo 3 aula 14
 const Page = ()=> {
-  
-  const [fullName, setFullName] = useState<People>({name: 'Bonieky', lastName: 'Lacerda'})
-  
-  const handleClearButton = ()=> {
-    setFullName({...fullName, name:''})
+  const [itemInput, setitemInput] = useState('');
+  const [list, setList] = useState<ToDoItem[]>([
+    { label: 'Fazer deve de casa', checked: false },
+    { label: 'Comprar o bolo', checked: false }
+  ]);
+  const handleAddButton = ()=> {
+    if(itemInput.trim() === '') return;
+    setList([...list, {label: itemInput, checked: false}])
+    setitemInput('')
+  };
+  const deleteItem = (index: number) => {
+    setList(list.filter((item, key)=> key !== index))
   }
+
 
 return (
    
   
-    <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
-      <input 
-      type="text" 
-      placeholder="Nome" 
-      className="border border-black p-3 text-2xl text-black rounded-md mb-3"
-      value={fullName.name}
-      onChange={ e=> setFullName({...fullName, name: e.target.value})} />
-      
-      
-      <input 
-      type="text" 
-      placeholder="Sobrenome" 
-      className="border border-black p-3 text-2xl text-black rounded-md mb-3"
-      value={fullName.lastName}
-      onChange={ e=> setFullName({...fullName, lastName: e.target.value})}/>
-      
-      <p>Meu nome completo é:</p>
-      <p>{fullName.name} {fullName.lastName}</p>
-      <button onClick={handleClearButton} className="rounded-md bg-blue-500 p-2 mt-3">Limpar Nome</button>
+    <div className="w-screen h-screen flex flex-col justify-center items-center text-2xl">
+     <h1 className="text-4xl mt-5">Lista de Tarefas</h1>
+      <div className="flex w-full max-w-lg my-3 p-4 rounded-md gb-gray-700 border-2 border-gray-500 bg-gray-600">
+        <input 
+        type="text" 
+        placeholder="O que deseja fazer"
+        className="flex-1 border-black p-3 pr-2 text-2xl text-black rounded-md mr-3" 
+        value={itemInput}
+        onChange={e => setitemInput(e.target.value)}
+        />
+        <button onClick={handleAddButton}>Adicionar</button>
       </div>
+
+      <p className="my-4">{list.length} Itens na lista</p>
+
+      <ul className="w-full max-w-lg list-disc pl-5 ">
+        {list.map((item, index) => (
+          <li>{item.label} - <button className="hover:underline" onClick={()=> deleteItem(index)}>[ deletar ]</button></li>
+        ))}
+      </ul>
+    </div>
 )}
-//Obs: no onChange a primeira tentativa para exemplos foi a onChange={ e=> setFullName({name: e.target.value, lastName: fullName.lastName})} 
-// o que não é útil tendo em vista que o objeto pode ter muitas propriedades e type pedirá todas elas
-// então a solução é a que está no onCHange agora.
 
 
  export default Page;
+
+// "use client"
+
+// import { ToDoItem } from "@/types/ToDoItem";
+// import { useState } from "react";
+
+
+// //Aula Arrays em States - Adicionar - Modulo 3 aula 13
+// const Page = ()=> {
+//   const [itemInput, setitemInput] = useState('');
+//   const [list, setList] = useState<ToDoItem[]>([
+//     { label: 'Fazer deve de casa', checked: false },
+//     { label: 'Comprar o bolo', checked: false }
+//   ]);
+//   const handleAddButton = ()=> {
+//     if(itemInput.trim() === '') return;
+//     setList([...list, {label: itemInput, checked: false}])
+//     setitemInput('')
+//   };
+
+
+// return (
+   
+  
+//     <div className="w-screen h-screen flex flex-col justify-center items-center text-2xl">
+//      <h1 className="text-4xl mt-5">Lista de Tarefas</h1>
+//       <div className="flex w-full max-w-lg my-3 p-4 rounded-md gb-gray-700 border-2 border-gray-500 bg-gray-600">
+//         <input 
+//         type="text" 
+//         placeholder="O que deseja fazer"
+//         className="flex-1 border-black p-3 pr-2 text-2xl text-black rounded-md mr-3" 
+//         value={itemInput}
+//         onChange={e => setitemInput(e.target.value)}
+//         />
+//         <button onClick={handleAddButton}>Adicionar</button>
+//       </div>
+
+//       <p className="my-4">{list.length} Itens na lista</p>
+
+//       <ul className="w-full max-w-lg list-disc pl-5 ">
+//         {list.map((item, index) => (
+//           <li>{item.label} - <button className="hover:underline">[ deletar ]</button></li>
+//         ))}
+//       </ul>
+//     </div>
+// )}
+
+
+//  export default Page;
+
+// "use client"
+
+// import { ToDoItem } from "@/types/ToDoItem";
+// import { useState } from "react";
+
+
+// //Aula Arrays em States - Exibir - Modulo 3 aula 12
+// const Page = ()=> {
+//   const [itemInput, setitemInput] = useState('');
+
+//   const [list, setList] = useState<ToDoItem[]>([
+//     { label: 'Fazer deve de casa', checked: false },
+//     { label: 'Comprar o bolo', checked: false }
+//   ]);
+//   const handleAddButton = ()=> {
+    
+//   };
+
+
+// return (
+   
+  
+//     <div className="w-screen h-screen flex flex-col justify-center items-center text-2xl">
+//      <h1 className="text-4xl mt-5">Lista de Tarefas</h1>
+//       <div className="flex w-full max-w-lg my-3 p-4 rounded-md gb-gray-700 border-2 border-gray-500 bg-gray-600">
+//         <input 
+//         type="text" 
+//         placeholder="O que deseja fazer"
+//         className="flex-1 border-black p-3 pr-2 text-2xl text-black rounded-md mr-3" 
+//         value={itemInput}
+//         onChange={e => setitemInput(e.target.value)}
+//         />
+//         <button onClick={handleAddButton}>Adicionar</button>
+//       </div>
+
+//       <ul className="w-full max-w-lg list-disc pl-5 ">
+//         {list.map(item => (
+//           <li>{item.label} - <button className="hover:underline">[ deletar ]</button></li>
+//         ))}
+//       </ul>
+//     </div>
+// )}
+
+
+//  export default Page;
+
+// "use client"
+
+// import { useState } from "react";
+// import { People } from "@/types/People";
+
+// //Aula Atualizando objetos em States - Modulo 3 aula 11
+// const Page = ()=> {
+  
+//   const [fullName, setFullName] = useState<People>({name: 'Bonieky', lastName: 'Lacerda'})
+  
+//   const handleClearButton = ()=> {
+//     setFullName({...fullName, name:''})
+//   }
+
+// return (
+   
+  
+//     <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
+//       <input 
+//       type="text" 
+//       placeholder="Nome" 
+//       className="border border-black p-3 text-2xl text-black rounded-md mb-3"
+//       value={fullName.name}
+//       onChange={ e=> setFullName({...fullName, name: e.target.value})} />
+      
+      
+//       <input 
+//       type="text" 
+//       placeholder="Sobrenome" 
+//       className="border border-black p-3 text-2xl text-black rounded-md mb-3"
+//       value={fullName.lastName}
+//       onChange={ e=> setFullName({...fullName, lastName: e.target.value})}/>
+      
+//       <p>Meu nome completo é:</p>
+//       <p>{fullName.name} {fullName.lastName}</p>
+//       <button onClick={handleClearButton} className="rounded-md bg-blue-500 p-2 mt-3">Limpar Nome</button>
+//       </div>
+// )}
+// //Obs: no onChange a primeira tentativa para exemplos foi a onChange={ e=> setFullName({name: e.target.value, lastName: fullName.lastName})} 
+// // o que não é útil tendo em vista que o objeto pode ter muitas propriedades e type pedirá todas elas
+// // então a solução é a que está no onCHange agora.
+
+
+//  export default Page;
 
 // "use client"
 
